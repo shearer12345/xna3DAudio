@@ -1,8 +1,5 @@
 #3D Audio in XNA
 
-
-##Structure
-
 [http://shearer12345.github.io/xna3DAudio/](http://shearer12345.github.io/xna3DAudio/)
 
 - source [https://github.com/shearer12345/xna3DAudio](https://github.com/shearer12345/xna3DAudio)
@@ -53,10 +50,13 @@
 
 Our auditory systems use several cues for sound source localization, including:
 
-- time differences between ears (gives azimuth)
+- time differences between ears
+  - sound from the right side reaches the right ear earlier than the left ear
+  - the auditory system evaluates interaural time differences from:
+    - phase delays at low frequencies
+    - group delays at high frequencies
 - level differences between ears
 - spectral (frequency) information
-- timing analysis
 - correlation analysis
 - pattern matching
 
@@ -73,6 +73,20 @@ http://en.wikipedia.org/wiki/Head-related_transfer_function
 
 
 
+##Other acoustic effects
+
+- size of the space
+  - reverberation delays
+- kind of surfaces in the space (hard, soft)
+  - how fast reverb attenuates
+- sound refracts around corners
+- sound bounces off objects
+  - can lead to audio focusing (e.g. acoustic mirrors)
+    <img src="http://upload.wikimedia.org/wikipedia/commons/9/94/WW1AcousticMirrorKilnsea%28PaulGlazzard%29Jan2007.jpg" alt="acoustic mirror" height="200">
+- NOTE: being **very** general, simplistic here
+
+
+
 ##What (physical) equipment is needed?
 
 - headphones - speakers collocated with ears so can provide some very power effects (try the previous examples with headphones)
@@ -84,14 +98,45 @@ http://en.wikipedia.org/wiki/Head-related_transfer_function
   - 2.1 (two channels of medium/high frequency (which give location), and one subwoofer (low frequency, which humans can't locate))
   - 4.1 (front left, front right, back left, back right, sub) - not very common
   - 5.1 (centre, front left, front right, back left, back right, sub)
-    <img src="http://upload.wikimedia.org/wikipedia/commons/c/cc/5_1_channels_%28surround_sound%29_label.svg" alt="5.1 surround sound" height="200">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/c/cc/5_1_channels_%28surround_sound%29_label.svg" alt="5.1 surround sound" height="200"> <img src="http://www.richersounds.com/images/tips/surroundSetup.gif" alt="5.1 surround sound" height="200">
   - 7.1 (centre, front left, front right, left, right, back left, back right, sub)
+
 
 
 ##What libraries exist (for real-time games)
 
-- mainly OpenAL (which isn't open in the way OpenGL is, but ...)
-- 
-##Further / alternative sources
+- built into XNA
+- OpenAL (which isn't open in the way OpenGL is, but ...)
+  - OpenAL soft most useful implementation for Desktop (http://kcat.strangesoft.net/openal.html)
+  - OpenAL binding in OpenTK (C# library for OpenGL etc) (http://www.opentk.com/doc/audio)
+  - OpenAL (soft) also ported to Android (https://github.com/apportable/openal-soft)
+- OpenSL ES (on mobile platforms)
+- FMOD (commercial, free for indie), used in Forza 5 (http://fmod.org)
 
-- most of the demo code etc is from RB Whitaker's Wiki - http://rbwhitaker.wikidot.com/audio-tutorials
+
+##What can those libraries do?
+
+- only a **small** subset of auralization techniques:
+  - time differences between ears
+  - level differences between ears
+  - Head-related transfer function if you write a function for it
+- in general, nothing else
+  - but you can manually setup reverb etc to simulate spaces, but doing this properly, dynamically, in real-time is an open research problem
+
+
+##Research
+
+- http://gamma.cs.unc.edu/PrecompWaveSim/
+  - <iframe width="420" height="315" src="//www.youtube.com/embed/MQt1jtDBNK4" frameborder="0" allowfullscreen></iframe>
+  - <iframe width="420" height="315" src="//www.youtube.com/embed/FDL39J-i0yQ" frameborder="0" allowfullscreen></iframe>
+    - around 2:20
+
+
+
+##Hands on
+
+- there are a variety of XNA audio tutorials, I recommended the following:
+  - MSDN
+    - http://msdn.microsoft.com/en-us/library/dd940200.aspx
+    - http://msdn.microsoft.com/en-us/library/bb447686.aspx
+  - RB Whitaker's Wiki - http://rbwhitaker.wikidot.com/audio-tutorials
