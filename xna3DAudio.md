@@ -12,3 +12,6 @@
 ##What is 3D audio anyway?
 
 
+##Further / alternative sources
+
+- most of the demo code etc is from RB Whitaker's Wiki - http://rbwhitaker.wikidot.com/audio-tutorials
